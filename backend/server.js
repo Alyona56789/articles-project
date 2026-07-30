@@ -17,8 +17,11 @@ app.use('/article', articleSingleRoutes);
 const commentRoutes = require('./routes/commentRoutes');
 app.use('/article/:articleId', commentRoutes);
 
+const analyticRoutes = require('./routes/analyticRoutes');
+app.use('/analytic', analyticRoutes);
+
 app.get('/', (req, res) => {
-  res.json({ message: 'Сервер работает! 🚀' });
+  res.json({ message: 'Сервер работает!' });
 });
 
 const PORT = process.env.PORT || 3000;
