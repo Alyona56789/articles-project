@@ -1,11 +1,26 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <v-app>
+    <v-app-bar color="primary" dark>
+      <v-app-bar-title>
+        <router-link to="/" style="color: white; text-decoration: none;">
+          Articles App
+        </router-link>
+      </v-app-bar-title>
+      <v-spacer></v-spacer>
+      <v-btn text to="/">Статьи</v-btn>
+      <v-btn text to="/analytics">Аналитика</v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <v-container>
+        <router-view></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
-<style scoped></style>
+<script>
+export default {
+  name: 'App'
+}
+</script>
