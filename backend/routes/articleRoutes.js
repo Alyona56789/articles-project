@@ -23,9 +23,7 @@ router.get('/', async (req, res) => {
 router.get('/:id/', async (req, res) => {
   try {
     const article = await Article.findByPk(req.params.id);
-    if (!article) {
-      return res.status(404).json({ message: 'Статья не найдена' });
-    }
+    if (!article) return res.status(404).json({ message: 'Статья не найдена' });
     res.json(article);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -35,9 +33,7 @@ router.get('/:id/', async (req, res) => {
 router.patch('/:id/', async (req, res) => {
   try {
     const article = await Article.findByPk(req.params.id);
-    if (!article) {
-      return res.status(404).json({ message: 'Статья не найдена' });
-    }
+    if (!article) return res.status(404).json({ message: 'Статья не найдена' });
     await article.update(req.body);
     res.json(article);
   } catch (error) {
@@ -48,9 +44,7 @@ router.patch('/:id/', async (req, res) => {
 router.delete('/:id/', async (req, res) => {
   try {
     const article = await Article.findByPk(req.params.id);
-    if (!article) {
-      return res.status(404).json({ message: 'Статья не найдена' });
-    }
+    if (!article) return res.status(404).json({ message: 'Статья не найдена' });
     await article.destroy();
     res.json({ message: 'Статья удалена' });
   } catch (error) {

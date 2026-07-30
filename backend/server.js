@@ -2,19 +2,23 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/db');
-const { Article, Comment } = require('./models');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const articleRoutes = require('./routes/articleRoutes');
-app.use('/article', articleRoutes);
-app.use('/articles', articleRoutes);
+const articleListRoutes = require('./routes/articleRoutes');
+app.use('/articles', articleListRoutes);
+
+const articleSingleRoutes = require('./routes/articleRoutes');
+app.use('/article', articleSingleRoutes);
+
+const commentRoutes = require('./routes/commentRoutes');
+app.use('/article/:articleId', commentRoutes);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Сервер работает!' });
+  res.json({ message: 'Сервер работает! 🚀' });
 });
 
 const PORT = process.env.PORT || 3000;
